@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+div, aside, header, footer, section {outline:1px dashed red;}
+body {
+    font: 16px/1.4 "Lucida Grande", Sans-Serif; /* 1em = 16px */
+    color:#333333;
+    margin:0;
+    padding:0;
+    width:100%;
+}
+.header {
+    width: 80%;
+    margin: 0 auto;
+}
+.wrappercontent {
+    width: 80%;
+    margin: 0 auto;
+}
+img {
+    width: 5em;
+    height: 8em;
+}
+.content li {
+    text-decoration: none;
+    display: inline;
+    margin-left: 2em;
+}
+
+
+
+
+
+/* clear */
+.cf {clear:both}
+
+/*clearfix hack*/
+.clearfix:before, .clearfix:after {
+content: " ";
+display: table;
+}
+.clearfix:after {
+clear: both;
+}
