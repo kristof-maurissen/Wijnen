@@ -26,6 +26,16 @@ class KlantService {
     }
     
     public function checkWachtwoord($wachtwoord) {
+        if (strlen($wachtwoord) > 6  && strlen($wachtwoord) < 32 && preg_match('/[a-z]/', $wachtwoord) && preg_match('/[A-Z]/', $wachtwoord)){   
+            $passed_count = 0;
+            if( preg_match('/[0-9]/', $wachtwoord) ) { $passed_count++; }  // contains digit
+            //if( preg_match('/[^a-zA-Z0-9]/', $wachtwoord) ) { $passed_count++; }  // contains symbol
+            if( $passed_count >= 1 ) {
+                return true;
+            }else{
+                return false;
+            }          
+        }
         
         /*$uc = 0; $lc = 0; $num = 0; $other = 0;
         for ($i = 0, $j = strlen($wachtwoord); $i < $j; $i++) {
