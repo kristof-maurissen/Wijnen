@@ -18,7 +18,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "registreer") {
     $wachtwoord = $klantService->checkWachtwoord($_POST["wachtwoord"]);
     $leeginput = $klantService->checkLeegInput($_POST["naam"], $_POST["voornaam"], $_POST["straat"], $_POST["nr"], $_POST["postcode"], $_POST["gemeente"], $_POST["wachtwoord"], $_POST["email"]);
     $checkemail = $klantService->checkEmail($_POST["email"]);
-    if ($wachtwoord){
+    if (!$wachtwoord){
         header ("location: registreren.php?error=wachtwoord");
         exit(0);
     }
