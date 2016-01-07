@@ -1,47 +1,59 @@
 <?php
-//scr/WijnshopTest/Data/WijnDAO.php
+//scr/WijnshopTest/Data/BestregDAO.php
 
 namespace WijnshopTest\Data;
 
 use WijnshopTest\Data\DBConfig;
-use WijnshopTest\Entities\Wijnen;
+use WijnshopTest\Entities\Bestreg;
 //use BroodjesProject\Exceptions;
 use PDO;
 
-class WijnDAO {
+class BestregDAO {
     
     public function getAll() {
-        $sql = "select * from wijnen"; 
+        $sql = "select * from bestreg"; 
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $resultSet = $dbh->query($sql);
         $lijst = array(); 
         
         foreach ($resultSet as $rij) {
-            $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]); 
-            array_push($lijst, $wijnen);  
+            $bestreg = Bestreg::create($rij["idbestreg"], $rij["idwijn"], $rij["idverpak"], $rij["aantal"], $rij["levkost"], $rij["extra"]); 
+            array_push($lijst, $bestreg);  
         } 
             $dbh = null; 
             return $lijst;       
     }
     
-    public function createWijn($naam, $jaartal, $land, $cat, $image, $artcode, $prijs) {
-        $sql = "insert into wijnen (naam, jaartal, land, cat, image, artcode, prijs) values(:naam, :jaartal, :land, :cat, :image, :artcode, :prijs)";
+    public function createBestreg($idwijn, $idverpak, $aantal, $levkost, $extra) {
+        $sql = "insert into bestelreg (idwijn, idverpak, aantal, levkost, extra) values(:idwijn, :idverpak, :aantal, :levkost, :extra)";
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $stmt = $dbh->prepare($sql);
-        $stmt->execute(array(":naam" => $naam, ":jaartal" => $jaartal, ":land" => $land, ":cat" => $cat, ":image" => $image, ":artcode" => $artcode, ":prijs" => $prijs));
+        $stmt->execute(array(":idwijn" => $idwijn, ":idverpak" => $idverpak, ":aantal" => $aantal, ":levkost" => $levkost, ":extra" => $extra));
         $dbh = null;
     }
     
-    public function getWijnByCat($cat) {
+    
+    
+    public function deleteBestreg($idbestreg) { 
+        $sql = "delete from bestelreg where idbestreg = :idbestreg" ; 
+        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD); 
+        
+        $stmt = $dbh->prepare($sql); 
+        $stmt->execute(array(':idbestreg' => $idbestreg)); 
+        $dbh = null; 
+        
+    }
+}
+
+/*public function getWijnByCat($cat) {
         $sql = "select * from wijnen where cat = :cat";
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         
         $stmt = $dbh->prepare($sql); 
-        $stmt->execute(array(':cat' => $cat)); 
+        $stmt->execute(array(':artcode' => $artcode)); 
         $rij = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+         
         $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
-        
         
         $dbh = null; 
         return $wijnen; 
@@ -73,16 +85,4 @@ class WijnDAO {
         
         $dbh = null; 
         return $wijnen; 
-    }
-    
-    public function deleteWijn($idwijn) { 
-        $sql = "delete from wijnen where idwijn = :idwijn" ; 
-        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD); 
-        
-        $stmt = $dbh->prepare($sql); 
-        $stmt->execute(array(':idwijn' => $idwijn)); 
-        $dbh = null; 
-        
-    }
-}
-
+    }*/

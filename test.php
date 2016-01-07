@@ -17,13 +17,13 @@ if (isset($_GET["action"]) && $_GET["action"] == "test") {
     $wijnService = new WijnService();
     $wijn = $wijnService->newWijn($_POST["naam"], $_POST["jaartal"], $_POST["land"], $_POST["cat"], $_POST["image"], $_POST["artcode"], $_POST["prijs"]);
     exit(0);
-    if (!$wijn) {
-        header ("location: Test.php?action=test");
+    if ($wijn) {
+        header ("location: test.php");
         
      
     }else{
         print ("ok");
-        header ("location: login.php");     
+        header ("location: test.php");     
      
      
 }

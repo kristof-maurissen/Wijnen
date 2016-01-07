@@ -17,6 +17,12 @@ class WijnService {
         $lijst = $wijnDAO->getWijnByCat($cat);
         return $lijst;
     }
+    
+    public function getIdOfWijn($idwijn){
+        $wijnDAO = new WijnDao();
+        $lijst = $wijnDAO->getWijnByID($idwijn);
+        return $lijst;
+    }
 
     public function newWijn($naam, $jaartal, $land, $cat, $image, $artcode, $prijs) {       
         $wijnDAO = new WijnDAO();

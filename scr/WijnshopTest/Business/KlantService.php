@@ -25,13 +25,46 @@ class KlantService {
             } */
     }
     
+    public function checkWachtwoord($wachtwoord) {
+        
+        /*$uc = 0; $lc = 0; $num = 0; $other = 0;
+        for ($i = 0, $j = strlen($wachtwoord); $i < $j; $i++) {
+            $c = substr($wachtwoord,$i,1);
+            if (preg_match('/[A-Z]/',$c)) {
+                $uc++;
+            } elseif (preg_match('/[a-z]/',$c)) {
+                $lc++;
+            } elseif (preg_match('/[0-9]/',$c)) {
+                $num++;
+            } else {
+                $other++;
+            }
+        }( ($uc >=1) && ($lc >=1)&& ($num >=1) && )*/
+        if (strlen($wachtwoord) < 6 || strlen($wachtwoord) > 32)  {
+            return true;
+        }else{
+            return false;
+        }
+    }
+        
+        
+    
+    
+    public function checkLeegInput($naam, $voornaam, $straat, $nr, $postcode, $gemeente, $wachtwoord, $email) {
+        if (empty($naam) || empty($voornaam) || empty($straat) || empty($nr) || empty($postcode) || empty($gemeente)|| empty($wachtwoord) || empty($email)) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
     public function checkEmail($email) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === true){
         $klantEmail = Klant::getEmail();
         if ($klantEmail !== $email){
-            $email = true;
+            $email = false;
         }else{
-            return false;
+            return true;
         }
         }
     }
@@ -39,7 +72,7 @@ class KlantService {
     public function controlKlant($email, $wachtwoord) {
         $klantDao = new KlantDAO();
         $klant = $klantDao->getKlantByEmail($email);
-        if (isset($klant) && $klant->getWachtwoord() == $wachtwoord){
+        if (isset($klant) && $klant->getWachtwoord() == sha1($email . $wachtwoord)){
         return true;
         }else{
         return false;

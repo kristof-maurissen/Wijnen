@@ -33,7 +33,7 @@ class Wijnen{
     
     public static function create($idwijn, $naam, $jaartal, $land, $cat, $image, $artcode, $prijs) {
         if (!isset(self::$idMap[$idwijn])) {
-            self::$idMap[$idwijn] = new Klant($idwijn, $naam, $jaartal, $land, $cat, $image, $artcode, $prijs);
+            self::$idMap[$idwijn] = new Wijnen($idwijn, $naam, $jaartal, $land, $cat, $image, $artcode, $prijs);
         }
         return self::$idMap[$idwijn];
     }
@@ -57,7 +57,7 @@ class Wijnen{
         return $this->image;  
     }
     public function getArtCode() {
-        return $this->gemeente;  
+        return $this->artcode;  
     }
     public function getPrijs(){
         return $this->prijs;

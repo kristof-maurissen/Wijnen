@@ -11,7 +11,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "aanmelden") {
         $klantservice = new KlantService;
         $toegelaten = $klantservice->controlKlant($_POST["txtEmail"], $_POST["txtWachtwoord"]);
         
-        if ($toegelaten) {
+        if (!$toegelaten) {
             $_SESSION["aangemeld"] = true;
             header ("location: index.php"); 
             exit(0);
