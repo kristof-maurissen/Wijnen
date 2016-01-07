@@ -38,13 +38,16 @@ class WijnDAO {
         
         $stmt = $dbh->prepare($sql); 
         $stmt->execute(array(':cat' => $cat)); 
-        $rij = $stmt->fetch(PDO::FETCH_ASSOC);
+        $resultSet = $stmt->fetchAll();
+        $lijst = array();
         
+        foreach ($resultSet as $rij) {
         $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
-        
+        array_push($lijst, $wijnen);
+        }
         
         $dbh = null; 
-        return $wijnen; 
+        return $lijst; 
     }
     
     public function getWijnByArtcode($artcode) {
