@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<!-- scr/WijnshopTest/Presentation/Index.twig --> 
+ 
+    <head> 
+        <meta charset=utf-8> 
+        <title>Overzicht</title> 
+        <link rel="stylesheet" href="css/styling.css">
+    </head> 
+    <body> 
+        <section class="wrappercontent">
+        <h1>Overzicht</h1>
+        <form method="post" action="index.php?action=registreer">
+     <div class="input">
+                    <label for="wachtwoord">Wachtwoord</label>
+                    <input type ="password" name="wachtwoord" value="{{wachtwoord}}">
+                </div>
+                
+                
+                <div>
+                <input type="submit" value=" Registreren">
+                </div>
+            </form>  
+        {% for wijn in wijnen %}   
+        <div>
+        {{wijn.getNaam}} 
+        </div><br />   
+        {%endfor%}
+        
+         
+      </section>
+    </body>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<!-- scr/WijnshopTest/Presentation/Overzicht.twig --> 
+<html> 
+    <head> 
+        <meta charset=utf-8> 
+        <title>Product</title> 
+        <link rel="stylesheet" href="css/styling.css">
+    </head> 
+    <body>
+         
+    <section class="wrappercontent">
+        <h1>Product</h1>
+       
+        {% for wijnen in wijn %}
+            
+            <div class="wijnwrapper">
+            <div class="wijnlinks clearfix">   
+            <div class="wijntitel clearfix">
+                {{wijnen.getNaam}}
+            </div>
+            <div class="wijnimage">
+                <a href="product.php?action=zoek&id={{wijnen.getIdWijn}}">
+                    <!--<img src="images/{{getImage}}" alt="Rode wijn"></img>-->
+                </a>
+            </div>    
+            </div>
+            <div class="wijnrechts clearfix">   
+            <div class="wijnlandl">
+                {{wijnen.getLand}}
+            </div>   
+            <div class="wijnjaartal">
+                {{wijnen.getJaartal}}
+            </div>
+            <div class="wijnlinks">   
+                {{wijnen.getCat}}
+            </div>  
+            <div class="wijnartcode">
+                {{wijnen.getArtcode}}
+            </div>
+            <div class="wijnprijs">
+                &euro; {{wijnen.getPrijs}}
+            </div>
+            </div>
+            <div>
+            <a href="product.php?action=zoek&id={{wijnen.getIdWijn}}">Select</a>
+        </div>
+            
+            
+            </div>
+            <br />
+            
+            
+        {%endfor%}
+        
+    </section>
+        
+        
+    </body>
+</html>
