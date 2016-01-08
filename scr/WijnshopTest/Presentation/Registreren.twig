@@ -1,37 +1,77 @@
 <!DOCTYPE HTML>
 <!-- src/WijnshopTest/Presentation/Registreren.twig --> 
- 
+<html>
     <head> 
-        <meta charset=utf-8> 
+        <meta charset=utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Registreren</title> 
         <link rel="stylesheet" href="css/styling.css">
     </head> 
     <body> 
         <section class="wrappercontent">
         <h1>Registreren</h1>
-        
+        <h2>Alle velden zijn verplicht in te vullen</h2>
         <div>
-            <form method="post" action="registreren.php?action=registreer"> 
-                Naam : <input type ="text" name="naam"><br /><br />
-                Voornaam : <input type ="text" name="voornaam"><br /><br />
-                Straat : <input type ="text" name="straat"><br /><br />
-                Nr : <input type ="text" name="nr"><br /><br />
-                Postcode : <input type ="text" name="postcode"><br /><br />
-                Gemeente : <input type ="text" name="gemeente"><br /><br />
-                E-mail : <input type="email" name="email"><br /><br />
-                Wachtwoord : <input type ="password" name="wachtwoord"><br /><br />
+            <form method="post" action="registreren.php?action=registreer">
+                <div class="input">
+                    <label for="naam">Naam :</label>
+                    <input type ="text" name="naam" value="{{naam}}">
+                </div>
+                <div class="input">
+                    <label for="voornaam">Voornaam :</label>
+                    <input type ="text" name="voornaam" value="{{voornaam}}">
+                </div>
+                <div class="input">
+                    <label for="straat">Straat :</label>
+                    <input type ="text" name="straat" value="{{straat}}">
+                </div>
+                <div class="input">
+                    <label for="nr">Nr :</label>
+                    <input type ="text" name="nr" value="{{nr}}">
+                </div>
+                <div class="input">
+                    <label for="postcode">Postcode :</label>
+                    <input type ="text" name="postcode" value="{{postcode}}">
+                </div>
+                <div class="input">
+                    <label for="gemeente">Gemeente :</label>
+                    <input type ="text" name="gemeente" value="{{gemeente}}">
+                </div>
+                <div class="input">
+                    <label for="wachtwoord">Wachtwoord</label>
+                    <input type ="password" name="wachtwoord" value="{{wachtwoord}}">
+                </div>
+                <div class="input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" value="{{email}}">
+                </div>
                 
-                
+                <div>
                 <input type="submit" value=" Registreren">
-                
+                </div>
             </form>
         </div>
-        <div>
-            {%if%}
-                
-            {%endif%}
-        </div>
+        {%if error == "leegVeld"%}
+            <div class="error">
+                <p>
+                    Gelieve alle velden in te vullen! 
+                </p>
+            </div>
+        {%endif%}
+        {%if error == "klantBestaatAl"%}
+            <div class="error">
+                <p>
+                    Uw email is reeds geregistreerd.
+                </p>
+            </div>
+        {%endif%}
+        {% if error == "wachtwoord" %}
+            <div class="error">
+                <p>
+                    wachtwoord niet correct.
+                </p>
+            </div>
+        {%endif%}
         </section>
-        
-        
     </body>
+</html>

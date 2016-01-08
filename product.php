@@ -6,32 +6,36 @@ require_once ("Bootstrap.php");
 require_once ("Libraries/Twig/AutoLoader.php");
 
 session_start();
+
 $winDao = new WijnDAO();
 $wijnService = new WijnService();
-$wijnen = $wijnService->getWijnOverzicht();
-$overzicht = $wijnService->getIdOfWijn('13');
-/*print_r($overzicht);
-print("<br /><hr>");
-foreach ($wijnen as $wijn){
-    $wijn = $winDao->getWijnByCat('wit');
+$wijnen = "";
+$titel = "";
+
+    if (isset($_GET["action"]) && $_GET["action"] == "select") {
+        if (isset($_GET["wijn"])) {
+            $wijn = $_GET["wijn"];
+            $wijnen = $wijnService->getOverzichtByCat($wijn);
+            $titel = $wijn;
+        }else{
+            $titel = "";
+        }   
+        if (isset($_GET["land"])) {
+            $land = $_GET["land"];
+            $wijnen = $wijnService->getOverzichtByLand($land);
+            $titel = $land;
+        }
+        else if (isset($_GET["jaar"])) {
+            $jaartal = $_GET["jaar"];
+            $wijnen = $wijnService->getOverzichtByJaar($jaartal);
+            $titel = $jaartal;
+        }
+    }
     
-   
-}
- print_r($wijn);
+    
 
-print("<br /><hr>");*/
-//$wijn = $wijnenService->getIdOfWijn($_GET["id"]);
-//$cat = $wijnenService->getOverzichtByCat($_GET["rood"]);
-
-if (isset($_GET["action"]) && $_GET["action"] == "select") {
-    $select = $_GET["cat"];
-   // $wijn = $wijnService->getOverzichtByCat($select);
-    //print_r($wijn);
-    //$keuze = $_GET["cat"];
-}
-
-$view = $twig->render("Product.twig", array("wijnen" => $wijnen));
+$view = $twig->render("Product.twig", array("wijnen" => $wijnen, "titel" => $titel));
 print($view);
 
 
-//"cat" => $cat, "wijn" => $wijn "wijn" => $wijn, 
+  

@@ -7,53 +7,63 @@
         <link rel="stylesheet" href="css/styling.css">
     </head> 
     <body>
-         
-    <section class="wrappercontent">
-        <h1>Product</h1>
-        {{wijn}}
-        {% for wijnen in wijn %}
-            {{wijn}}
-            <div class="wijnwrapper">
-            <div class="wijnlinks clearfix">   
-            <div class="wijntitel clearfix">
-                {{wijnen.getNaam}}
-            </div>
-            <div class="wijnimage">
-                <a href="product.php?action=zoek&id={{getIdWijn}}">
-                    <!--<img src="images/{{getImage}}" alt="Rode wijn"></img>-->
-                </a>
-            </div>    
-            </div>
-            <div class="wijnrechts clearfix">   
-            <div class="wijnlandl">
-                {{wijnen.getLand}}
-            </div>   
-            <div class="wijnjaartal">
-                {{wijnen.getJaartal}}
-            </div>
-            <div class="wijnlinks">   
-                {{wijnen.getCat}}
-            </div>  
-            <div class="wijnartcode">
-                {{wijnen.getArtcode}}
-            </div>
-            <div class="wijnprijs">
-                &euro; {{wijnen.getPrijs}}
-            </div>
-            </div>
-            <div>
-            <a href="product.php?action=zoek&id={{wijn.getIdWijn}}">Select</a>
-        </div>
+       
+        <div class="totalwrapper clearfix">  
+            <section class="wrappercontent clearfix">
+                <div class="titel">
+                    <h3> Wijnen {{titel}}</h3>
+                </div>
+                {% for wijn in wijnen %}
             
-            
-            </div>
-            <br />
-            
-            
-        {%endfor%}
-        
-    </section>
-        
-        
+                <div class="wijnwrapper clearfix">     
+                <div class="wijntitel">
+                    {{wijn.getNaam}}
+                </div>
+                <div class="wijnimage">
+                        <img src="images/{{wijn.getImage}}" alt="Rode wijn"></img>
+                </div>    
+                <div class="wijnland">
+                    {{wijn.getLand}}
+                </div>   
+                <div class="wijnjaartal">
+                    {{wijn.getJaartal}}
+                </div>
+                <div class="wijncat">   
+                    {{wijn.getCat}}
+                </div>  
+                <div class="wijnartcode">
+                    {{wijn.getArtcode}}
+                </div>
+                <div class="wijnprijs">
+                    &euro; {{wijn.getPrijs}}
+                </div>
+                <div class="wijnform">
+                <form method="post" action="product.php?action=bestelregel&artikel={{wijn.getIdWijn}}">
+                    <div class="input">
+                        <label for="naam">Aantal flessen :</label>
+                        <input type ="number" name="aantal" value="0"><!--aantal meegeven-->
+                    </div>
+                    <div class="input">
+                        <label for="naam">Verpakking :</label>
+                        <select> 
+                            <option value="Geen">Geen verpakking</option>
+                            <option name="" value="Doos2">Doos voor 2 flessen</option><!-- id verpakking meegeven--> 
+                            <option name="" value="Doos4">Doos voor 4 flessen</option>
+                            <option name="" value="Doos6">Doos voor 6 flessen</option>
+                            <option name="" value="Kist2">Kist voor 2 flessen</option>
+                            <option name="" value="Kist4">Kist voor 4 flessen</option>
+                            <option name="" value="Kist6">Kist voor 6 flessen</option> 
+                        </select>   
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="Voeg toe aan winkelwagentje">
+                    </div> 
+                </form>
+                </div>
+                </div>
+                    <br />  
+                {%endfor%}    
+            </section>       
+        </div>     
     </body>
 </html>

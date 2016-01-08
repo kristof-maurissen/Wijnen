@@ -17,15 +17,18 @@ if (isset($_GET["action"]) && $_GET["action"] == "aanmelden") {
             exit(0);
         
         }else {
-            header ("location: login.php");
+            header ("location: login.php?error=fouteInlog");
             exit(0);
             
         }
+}else if (isset($_GET["error"])) {
+        $error = $_GET["error"];
+        print_r($error);
 } 
 
 
 
 
-    $view = $twig->render("Login.twig", array());
+    $view = $twig->render("Login.twig", array("error" => $error));
     print($view);
 

@@ -8,34 +8,102 @@ body {
     padding:0;
     width:100%;
 }
-.header {
-    width: 80%;
-    margin: 0 auto;
-}
 .totalwrapper {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
+    padding: 0;
+}
+.header {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+.headerlogo {
+    width: 3em;
+    height: 8em;
+}
+.headertitel {
+    width: 0; 
+}
+.reglog {
+    
+}
+.reg {
+    
+}
+.wrappersidebar {
+    float: left;
+    padding: 1em;
+    min-height: 255em;
+}
+.wrapperitem {
+    
+}
+.navtitel {
+    
+}
+.navigatie {
+    
+}
+.link {
+    
 }
 .wrappercontent {
-    width: 60%;
+    width: 89%;
     margin: 0 auto;
+    padding: 0;
+    float: left;
 }
 img {
     width: 5em;
-    height: 16em;
+    height: 18em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
 }
-.content li {
+.wijnwrapper {
+    width: 22%;
+    margin:0.2em;
+    float: left;
+    padding: 0.7em;
+    clear: right;
+}
+.wijntitel {
+    margin : 0.6em;
+}
+.wijnimage {
+    margin : 0.6em;
+}
+.wijnimage img {
+    display: block;
+    margin: 0 auto;
+}
+.wijnland {
+    margin : 0.6em;
+}
+.wijnjaartal {
+    margin : 0.6em;
+}
+.wijncat {
+    margin : 0.6em;
+}
+.wijnartcode {
+    margin : 0.6em;
+}
+.wijnprijs {
+    margin : 0.6em; 
+}
+.wijnform {
+    margin: 0.6em;
+}
+
+.input {
+    padding: 0.5em;
+}
+/*.content li {
     text-decoration: none;
     display: inline;
     margin-left: 2em;
-}
-.wijnrechts {
-    //float: right;
-}
-.wijnaside {
-    float: left;
-}
-
+}*/
 
 
 

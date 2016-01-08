@@ -5,7 +5,7 @@ namespace WijnshopTest\Data;
 
 use WijnshopTest\Data\DBConfig;
 use WijnshopTest\Entities\Bestelling;
-//use BroodjesProject\Exceptions;
+//use WijnshopTest\Exceptions;
 use PDO;
 
 class BestellingDAO {
@@ -24,7 +24,7 @@ class BestellingDAO {
             return $lijst;       
     }
     
-    public function createBestreg($idbestel, $idklant, $besteldata, $prijstotaal) {
+    public function createBestel($idbestel, $idklant, $besteldata, $prijstotaal) {
         $sql = "insert into bestelling (idbestel, idklant, besteldata, prijstotaal) values(:idbestel, :idklant, :besteldata, :prijstotaal)";
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $stmt = $dbh->prepare($sql);

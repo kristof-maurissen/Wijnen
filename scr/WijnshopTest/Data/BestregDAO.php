@@ -5,7 +5,7 @@ namespace WijnshopTest\Data;
 
 use WijnshopTest\Data\DBConfig;
 use WijnshopTest\Entities\Bestreg;
-//use BroodjesProject\Exceptions;
+//use WijnshopTest\Exceptions;
 use PDO;
 
 class BestregDAO {
