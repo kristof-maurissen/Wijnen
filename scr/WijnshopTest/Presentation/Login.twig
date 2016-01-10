@@ -1,10 +1,9 @@
-<!DOCTYPE HTML>
 <!-- scr/WijnshopTest/Presentation/Login.twig --> 
- 
+{%include 'includes/header.twig'%} 
     <head> 
         <meta charset=utf-8> 
         <title>Login</title> 
-        <!--<link rel="stylesheet" href="css/styling.css">-->
+        <link rel="stylesheet" href="css/styling.css">
     </head> 
     <body>
         <h1>Login</h1>
@@ -31,9 +30,10 @@
             </table> 
         </form>  
     </div>
-       <!-- {% if errorLogin %}
+       {% if error.fouteInlog %}
             <p>Foutieve login !</p><br />
-        {% endif %} -->
+        {% endif %} 
 
         
     </body
+

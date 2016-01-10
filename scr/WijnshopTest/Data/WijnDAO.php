@@ -1,9 +1,11 @@
 <?php
 //scr/WijnshopTest/Data/WijnDAO.php
+
 namespace WijnshopTest\Data;
+
 use WijnshopTest\Data\DBConfig;
 use WijnshopTest\Entities\Wijnen;
-//use BroodjesProject\Exceptions;
+//use WijnshopTest\Exceptions;
 use PDO;
 
 class WijnDAO {
@@ -37,12 +39,49 @@ class WijnDAO {
         $stmt = $dbh->prepare($sql); 
         $stmt->execute(array(':cat' => $cat)); 
         $resultSet = $stmt->fetchAll();
-        $lijst = array(); 
+        $lijst = array();
         
-        foreach ($resultSet as $rij) { 
+        foreach ($resultSet as $rij) {
         $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
-        array_push($lijst, $wijnen);  
+        array_push($lijst, $wijnen);
         }
+        
+        $dbh = null; 
+        return $lijst; 
+    }
+    
+    public function getWijnByLand($land) {
+        $sql = "select * from wijnen where land = :land";
+        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        
+        $stmt = $dbh->prepare($sql); 
+        $stmt->execute(array(':land' => $land)); 
+        $resultSet = $stmt->fetchAll();
+        $lijst = array();
+        
+        foreach ($resultSet as $rij) {
+        $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
+        array_push($lijst, $wijnen);
+        }
+        
+        $dbh = null; 
+        return $lijst; 
+    }
+    
+    public function getWijnByJaar($jaar) {
+        $sql = "select * from wijnen where jaartal = :jaar";
+        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        
+        $stmt = $dbh->prepare($sql); 
+        $stmt->execute(array(':jaar' => $jaar)); 
+        $resultSet = $stmt->fetchAll();
+        $lijst = array();
+        
+        foreach ($resultSet as $rij) {
+        $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
+        array_push($lijst, $wijnen);
+        }
+        
         $dbh = null; 
         return $lijst; 
     }
@@ -60,6 +99,7 @@ class WijnDAO {
         $dbh = null; 
         return $wijnen; 
     }
+
     public function getWijnByID($idwijn) {
         $sql = "select * from wijnen where idwijn = :idwijn";
         $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
@@ -67,11 +107,36 @@ class WijnDAO {
         $stmt = $dbh->prepare($sql); 
         $stmt->execute(array(':idwijn' => $idwijn)); 
         $rij = $stmt->fetch(PDO::FETCH_ASSOC);
-         
+
         $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
-        
+
         $dbh = null; 
         return $wijnen; 
+    }
+    
+    public function getSelectWijnByID($idwijn) {
+        $sql = "select * from wijnen where idwijn = :idwijn";
+        $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        
+        $stmt = $dbh->prepare($sql); 
+        $stmt->execute(array(':idwijn' => $idwijn));
+        $resultSet = $stmt->fetchAll();
+        $lijst = array();
+        
+        foreach ($resultSet as $rij) {
+        $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
+        array_push($lijst, $wijnen);
+        }
+        
+        $dbh = null; 
+        return $lijst;
+        
+       /* $rij = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $wijnen = Wijnen::create($rij["idwijn"], $rij["naam"], $rij["jaartal"], $rij["land"], $rij["cat"], $rij["image"], $rij["artcode"],$rij["prijs"]);
+
+        $dbh = null; 
+        return $wijnen;*/ 
     }
     
     public function deleteWijn($idwijn) { 

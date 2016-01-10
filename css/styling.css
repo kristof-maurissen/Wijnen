@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-div, aside, header, footer, section, .input {outline:1px dashed red;}
+/*div, aside, header, footer, section {outline:1px dashed red;}*/
 body {
     font: 16px/1.4 "Lucida Grande", Sans-Serif; /* 1em = 16px */
     color:#333333;
@@ -8,24 +8,277 @@ body {
     padding:0;
     width:100%;
 }
-.header {
-    width: 80%;
+section{
+    width: 100%;
     margin: 0 auto;
+   
 }
-.wrappercontent {
-    width: 80%;
-    margin: 0 auto;
+aside {
+    width: 100%;
+}
+div {
+    margin: 0;
+    padding: 0;
 }
 img {
-    width: 5em;
-    height: 8em;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
-.content li {
+img.delete  {
+    height: 1em;
+    width: 1em;
+    float: right;
+}
+h1 {
+    font-size: 1.125em; 
+    padding: 0 0.8em;
+    margin:0;
+}
+h2 {
+    font-size: 1.0em; 
+    padding: 0 0.8em;
+    margin:0;
+}
+p {
+    padding: 0 0.7em;   
+}
+span {
+    font-weight: bold;
+    font-style : normal;
+    font-variant : normal;
+    letter-spacing : 0.175em;
+
+}
+a {
+    text-decoration:none;
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+/* unvisited link */
+a:link {
+    color: black;
+}
+/* visited link */
+a:visited {
+    color: black;
+}
+/* mouse over link*/
+a:hover {
+    color: red;
+} 
+/* selected link*/ 
+a:active {
+    color: red;
+} 
+#aselect a{
+    color: blue;
+}
+.totalwrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+.header {
+    width: 100%;
+    min-height: 10.7em;
+    margin: 0;
+    padding: 0;
+    /*background-image:  url(images/logo.jpg);*/
+    background-color: #00838f;
+}
+.headerwrapper{
+    width: 90%;
+    min-height: 15.7em;
+    margin: 0 auto;
+    margin-top: 0.5em;
+    background-color: #00838f;
+    
+    clear: both;
+}
+.headerlogo {
+    width: 15em;
+    height: 10em;
+    float: left;
+    background-image: url(Images/logo.jpg);
+    margin-top: 0.6em;
+}
+ #logo {
+     width: 15em;
+    height: 10.1em;
+}
+.headertitel {
+    /*width: 0;*/
+    background-color: #373737;
+    color: white;
+   /* min-height: 2em;*/
+    margin: 0 auto;
+    clear: both;
+    text-align: center;
+    /*display: inline-block;*/
+}
+.reglog {
+    color:white ;
+    background-color: inherit;
+    float: right;
+    margin-right: 2em;
+    margin-top:5em;
+}
+.reg {
+    color:white ;
+    background-color: inherit;
+    float: right;
+    margin-right: 2em;
+}
+.wrappersidebar {
+    width: 15%;
+    float: left;
+    padding: 1em;
+    
+}
+.wrapperitem {
+    
+}
+.navtitel {
+    
+}
+.navigatie {
+    
+}
+.link {
+    background-color: #00838f; 
+    
+}
+.wrappercontent {
+    width: 82%;
+    margin: 0 ;
+    padding: 0;
+    float: left;
+    border: 2px;
+}
+.wrappercontent ul {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.wrappercontent ul li {
+    margin: 0px auto ;
+    width: 100%;
+}
+#reg   {
+    width: 100%;
+    margin: 0 auto;
+        border: 2px;
+}
+#regtitel {
+    text-align: center;
+}
+ul {
+    list-style: outside none none;
+    padding: 0px;
+}
+#wijnimage {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 5em;
+    height: 18em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+.wijnwrapper {
+    width: 30%;
+    margin:0.2em;
+    float: left;
+    padding: 0.7em;
+    /*clear: right;*/
+}
+.wijnwrapper .selected {
+    margin: 0px;
+    float: left;
+}
+.wrappercontent .wrapselected  {
+    width: 50%;
+   
+    margin: 0 auto;
+    
+    
+}
+.selected li {
+    float: left;
+}
+ul .ulselected {
+    float: left;
+    margin: 0;
+}
+
+.wijntitel {
+    margin : 0.6em;
+    text-align: center;
+}
+.wijnimage {
+    margin : 0.6em;
+}
+.wijnimage img {
+    display: block;
+    margin: 0 auto;
+}
+#imageproduct {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 5em;
+    height: 18em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+.wijnland {
+    margin : 0.6em;
+}
+.wijnjaartal {
+    margin : 0.6em;
+}
+.wijncat {
+    margin : 0.6em;
+}
+.wijnartcode {
+    margin : 0.6em;
+}
+.wijnprijs {
+    margin : 0.6em; 
+}
+.wijnform {
+    margin: 0.6em;
+}
+
+.input {
+    padding: 0.5em;
+}
+.basket {
+    float: right;
+}
+.input {
+    margin: 0 auto;
+    width: 70%;
+}
+form {
+    width: 60%;
+    margin: 0 auto;
+}
+tbody #tabreg   {
+    margin-bottom:5em;
+}
+/*.content li {
     text-decoration: none;
     display: inline;
     margin-left: 2em;
-}
-
+}*/
 
 
 
@@ -41,4 +294,3 @@ display: table;
 .clearfix:after {
 clear: both;
 }
-

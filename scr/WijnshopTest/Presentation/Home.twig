@@ -1,0 +1,44 @@
+<!-- scr/WijnshopTest/Presentation/Home.twig -->
+{%include 'includes/header.twig'%} 
+    <head> 
+        <meta charset=utf-8> 
+        <title>Overzicht</title> 
+        <link rel="stylesheet" href="css/styling.css">
+    </head> 
+    <body>
+        <section class="totalwrapper clearfix">
+        {%include 'includes/sidebar.twig'%}    
+        <section class="wrappercontent">
+        
+        <ul>
+        {% for wijn in wijnen %}
+            <div class="wijnwrapper ">
+            <li>
+                <div class="wijntitel">{{wijn.getNaam}} </div> 
+            </li>
+            <li>
+                <a href="selected.php?action=keuze&id={{wijn.getIdWijn}}">
+                <div class="wijntitel">
+                    <img id="wijnimage" src="images/{{wijn.getImage}}">
+                </div>
+                </a>
+            </li>
+            <li>
+                <div class="wijntitel">{{wijn.getCat}} </div> 
+            </li>
+            <li>
+                <div class="wijntitel">{{wijn.getLand}} </div> 
+            </li>
+            <li>
+                <div class="wijntitel">{{wijn.getJaartal}} </div> 
+            </li>
+            
+            
+            </div>
+        {%endfor%}
+        </ul>
+        </section>
+        </section>
+        
+    </body>
+{%include 'includes/footer.twig'%}    

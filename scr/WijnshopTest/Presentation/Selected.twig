@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<!-- scr/WijnshopTest/Presentation/Overzicht.twig --> 
+{%include 'includes/header.twig'%} 
+    <head> 
+        <meta charset=utf-8> 
+        <title>Selected</title> 
+        <link rel="stylesheet" href="css/styling.css">
+    </head> 
+    <body>
+        <section class="totalwrapper clearfix">
+            {%include 'includes/sidebar.twig'%}
+            <section class="wrappercontent wrapselected ">
+               
+                <!--<div class="titel">
+                    <h3> Wijnen {{titel}}</h3>
+                </div>-->
+            <ul class="ulselected">
+            {% for wijn in wijnen %}
+                <div class="wijnwrapper selected">
+                <li>    
+                    <div class="wijntitel">{{wijn.getNaam}}</div>
+                </li>
+                <li>
+                    
+                    <div class="wijntitel">
+                        <img id="imageproduct" src="images/{{wijn.getImage}}" alt="Rode wijn"></img>
+                    </div>
+                    
+                </li>
+                <li>
+                    <div class="wijntitel">Herkomst : <b>{{wijn.getLand}}</b></div> 
+                </li>
+                <li>
+                    <div class="wijntitel">Jaartal : <b>{{wijn.getJaartal}}</b></div>
+                </li>
+                <li>
+                    <div class="wijntitel">Categorie : <b>{{wijn.getCat}}</b></div>
+                </li>
+                <li>
+                    <div class="wijntitel">Artikelcode : <b>{{wijn.getArtcode}}</b></div>
+                </li>
+                <li>
+                    <div class="wijntitel">Prijs : &euro; <b>{{wijn.getPrijs}}</b></div>
+                </li>
+               
+               <li>
+                <div class="wijntitel">
+                <form method="post" action="selected.php?action=selected&name={{wijn.getPrijs}}&id={{wijn.getIdWijn}}">
+                    <div class="input">
+                        <label for="aantal">Aantal flessen :</label>
+                        <input type ="number" name="aantal" value="0">
+                        <input type ="hidden" name="name" value="{{wijn.getPrijs}}"
+                               <!--aantal meegeven-->
+                    </div>
+                    <!--<div class="input">s
+                        <label for="naam">Verpakking :</label>
+                        <select> 
+                            <option value="Geen">Geen verpakking</option>
+                            <option name="" value="Doos2">Doos voor 2 flessen</option><!-- id verpakking meegeven--> 
+                           <!-- <option name="" value="Doos4">Doos voor 4 flessen</option>
+                            <option name="" value="Doos6">Doos voor 6 flessen</option>
+                            <option name="" value="Kist2">Kist voor 2 flessen</option>
+                            <option name="" value="Kist4">Kist voor 4 flessen</option>
+                            <option name="" value="Kist6">Kist voor 6 flessen</option> 
+                        </select>   
+                    </div>--> 
+                    <div class="input">
+                        <input type="submit"  name="submit" value="Voeg toe aan winkelwagentje">
+                    </div> 
+                </form>
+                </li>   
+                </div>
+                <div id="winkelmandje">
+            <h4>Uw winkelmandje:::::::::::::::::</h4>
+            <!--{%for keuze in winkelmandje%}-->
+                <div class="itembasket">
+                    <p>{{wijn.naam}}: {{wijn.prijs}}&euro; <a href="selected.php?action=verwijdart&id={{wijn.getIdWijn}}"><img class="delete" src="images/delete.jpg"/></a></p>
+                </div>
+            <!--{%endfor%}-->
+            <hr>
+            <p>Totaalprijs: <span id="basketotaal">{{totaalprijs}}&euro;</span></p>
+            <hr>
+            <div id="afrekenen">
+                <a class="" href="selected.php?action=afrekenen">Afrekenen</a>
+                
+            </div>
+        </div>
+                     
+                {%endfor%}
+                </ul>
+                
+                </section>
+            </section>       
+        </div>     
+
+    </body>
+</html>

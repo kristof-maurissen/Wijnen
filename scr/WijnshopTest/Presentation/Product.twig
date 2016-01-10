@@ -1,59 +1,78 @@
 <!DOCTYPE HTML>
 <!-- scr/WijnshopTest/Presentation/Overzicht.twig --> 
-<html> 
+{%include 'includes/header.twig'%} 
     <head> 
         <meta charset=utf-8> 
         <title>Product</title> 
         <link rel="stylesheet" href="css/styling.css">
     </head> 
     <body>
-         
-    <section class="wrappercontent">
-        <h1>Product</h1>
-       
-        {% for wijnen in wijn %}
-            
-            <div class="wijnwrapper">
-            <div class="wijnlinks clearfix">   
-            <div class="wijntitel clearfix">
-                {{wijnen.getNaam}}
-            </div>
-            <div class="wijnimage">
-                <a href="product.php?action=zoek&id={{wijnen.getIdWijn}}">
-                    <!--<img src="images/{{getImage}}" alt="Rode wijn"></img>-->
-                </a>
-            </div>    
-            </div>
-            <div class="wijnrechts clearfix">   
-            <div class="wijnlandl">
-                {{wijnen.getLand}}
-            </div>   
-            <div class="wijnjaartal">
-                {{wijnen.getJaartal}}
-            </div>
-            <div class="wijnlinks">   
-                {{wijnen.getCat}}
-            </div>  
-            <div class="wijnartcode">
-                {{wijnen.getArtcode}}
-            </div>
-            <div class="wijnprijs">
-                &euro; {{wijnen.getPrijs}}
-            </div>
-            </div>
-            <div>
-            <a href="product.php?action=zoek&id={{wijnen.getIdWijn}}">Select</a>
-        </div>
-            
-            
-            </div>
-            <br />
-            
-            
-        {%endfor%}
-        
-    </section>
-        
-        
+        <section class="totalwrapper clearfix">
+            {%include 'includes/sidebar.twig'%}
+            <section class="wrappercontent ">
+               
+                <!--<div class="titel">
+                    <h3> Wijnen {{titel}}</h3>
+                </div>-->
+            <ul>
+            {% for wijn in wijnen %}
+                <div class="wijnwrapper">
+                <li>    
+                    <div class="wijntitel">{{wijn.getNaam}}</div>
+                </li>
+                <li>
+                    <a id="aselect" href="selected.php?action=keuze&name={{wijn.getPrijs}}&id={{wijn.getIdWijn}}">
+                    <div class="wijntitel">
+                        <img id="imageproduct" src="images/{{wijn.getImage}}" alt="Rode wijn"></img>
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <div class="wijntitel">{{wijn.getLand}}</div> 
+                </li>
+                <li>
+                    <div class="wijntitel">{{wijn.getJaartal}}</div>
+                </li>
+                <li>
+                    <div class="wijntitel">{{wijn.getCat}}</div>
+                </li>
+                <li>
+                    <div class="wijntitel">
+                        <a id="aselect" href="selected.php?action=keuze&name={{wijn.getPrijs}}id={{wijn.getIdWijn}}">Select</a>
+                    </div>
+                </li>
+               <!-- <li>
+                <div class="wijntitel">
+                <form method="post" action="product.php?action=bestelregel&artikel={{wijn.getIdWijn}}">
+                    <div class="input">
+                        <label for="naam">Aantal flessen :</label>
+                        <input type ="number" name="aantal" value="0"><!--aantal meegeven-->
+                    <!--</div>
+                    <div class="input">
+                        <label for="naam">Verpakking :</label>
+                        <select> 
+                            <option value="Geen">Geen verpakking</option>
+                            <option name="" value="Doos2">Doos voor 2 flessen</option><!-- id verpakking meegeven--> 
+                            <!--<option name="" value="Doos4">Doos voor 4 flessen</option>
+                            <option name="" value="Doos6">Doos voor 6 flessen</option>
+                            <option name="" value="Kist2">Kist voor 2 flessen</option>
+                            <option name="" value="Kist4">Kist voor 4 flessen</option>
+                            <option name="" value="Kist6">Kist voor 6 flessen</option> 
+                        </select>   
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="Voeg toe aan winkelwagentje">
+                    </div> 
+                </form>
+                </li> -->   
+                </div>
+                
+                     
+                {%endfor%}
+                </ul>
+                </section>
+            </section>       
+        </div>     
+
     </body>
 </html>

@@ -2,7 +2,7 @@
 //scr/WijnshopTest/Entities/Klant.php
 namespace WijnshopTest\Entities;
 
-class Wijnen {
+class Wijnen{
     
     private static $idMap = array();
     
@@ -15,6 +15,9 @@ class Wijnen {
     private $artcode;
     private $prijs;
     
+    
+    
+    
     private function __construct($idwijn, $naam, $jaartal, $land, $cat, $image, $artcode, $prijs) {
         $this->idwijn = $idwijn;
         $this->naam =$naam;
@@ -23,7 +26,9 @@ class Wijnen {
         $this->cat = $cat;
         $this->image = $image;
         $this->artcode = $artcode;
-        $this->prijs = $prijs;   
+        $this->prijs = $prijs;
+         
+
     }
     
     public static function create($idwijn, $naam, $jaartal, $land, $cat, $image, $artcode, $prijs) {

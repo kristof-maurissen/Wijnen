@@ -1,6 +1,8 @@
 <?php
-//src/WijnshopTest/Entities/Klant.php
+//scr/WijnshopTest/Entities/Klant.php
+
 namespace WijnshopTest\Entities;
+
 class Klant{
     
     private static $idMap = array();
@@ -17,8 +19,8 @@ class Klant{
     
     
     
-    private function __construct($idklant, $naam, $voornaam, $straat, $nr, $postcode, $gemeente, $wachtwoord, $email) {
-        $this->id = $idklant;
+    private function __construct($idKlant, $naam, $voornaam, $straat, $nr, $postcode, $gemeente, $wachtwoord, $email) {
+        $this->idklant = $idKlant;
         $this->naam =$naam;
         $this->voornaam = $voornaam;
         $this->straat = $straat;
@@ -29,11 +31,11 @@ class Klant{
         $this->email = $email; 
     }
     
-    public static function create($idklant, $naam, $voornaam, $straat, $nr, $postcode, $gemeente, $wachtwoord, $email) {
-        if (!isset(self::$idMap[$idklant])) {
-            self::$idMap[$idklant] = new Klant($idklant, $naam, $voornaam, $straat, $nr, $postcode, $gemeente, $wachtwoord, $email);
+    public static function create($idKlant, $naam, $voornaam, $straat, $nr, $postcode, $gemeente, $wachtwoord, $email) {
+        if (!isset(self::$idMap[$idKlant])) {
+            self::$idMap[$idKlant] = new Klant($idKlant, $naam, $voornaam, $straat, $nr, $postcode, $gemeente, $wachtwoord, $email);
         }
-        return self::$idMap[$idklant];
+        return self::$idMap[$idKlant];
     }
     
     public function getIdKlant(){

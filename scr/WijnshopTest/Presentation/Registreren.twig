@@ -1,78 +1,98 @@
-<!DOCTYPE HTML>
 <!-- src/WijnshopTest/Presentation/Registreren.twig --> 
-<html>
+{%include 'includes/header.twig'%} 
     <head> 
         <meta charset=utf-8>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Registreren</title> 
         <link rel="stylesheet" href="css/styling.css">
     </head> 
-    <body> 
-        <section class="wrappercontent">
-        <h1>Registreren</h1>
-        <h2>Alle velden zijn verplicht in te vullen</h2>
-        <div>
+    <body>
+        <section class="totalwrapper clearfix">
+        <section id="reg" class="wrappercontent">
+            <div id="regtitel">
+                <h1>Registreren</h1>
+                <h3>Alle velden zijn verplicht in te vullen</h3>
+            </div>
+            <div class="input">
             <form method="post" action="registreren.php?action=registreer">
-                <div class="input">
-                    <label for="naam">Naam :</label>
-                    <input type ="text" name="naam" value="{{naam}}">
-                </div>
-                <div class="input">
-                    <label for="voornaam">Voornaam :</label>
-                    <input type ="text" name="voornaam" value="{{voornaam}}">
-                </div>
-                <div class="input">
-                    <label for="straat">Straat :</label>
-                    <input type ="text" name="straat" value="{{straat}}">
-                </div>
-                <div class="input">
-                    <label for="nr">Nr :</label>
-                    <input type ="text" name="nr" value="{{nr}}">
-                </div>
-                <div class="input">
-                    <label for="postcode">Postcode :</label>
-                    <input type ="text" name="postcode" value="{{postcode}}">
-                </div>
-                <div class="input">
-                    <label for="gemeente">Gemeente :</label>
-                    <input type ="text" name="gemeente" value="{{gemeente}}">
-                </div>
-                <div class="input">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" value="{{email}}">
-                </div>
-                <div class="input">
-                    <label for="wachtwoord">Wachtwoord</label>
-                    <input type ="password" name="wachtwoord" value="{{wachtwoord}}">
-                </div>
-                
-                
-                <div>
-                <input type="submit" value=" Registreren">
-                </div>
+                <table   style="width:100%">
+                    <tbody id="tabreg">
+                    <tr>
+                        <td><label for="naam"><h2>Naam :</h2></label></td>
+                        <td><input type ="text" name="naam" value="{{naam}}"></td> 
+                    </tr>
+                    <tr>
+                        <td><label for="naam"><h2>Voornaam :</h2></label></td>
+                        <td><input type ="text" name="voornaam" value="{{voornaam}}"></td> 
+                    </tr>
+                    <tr>
+                        <td><label for="straat"><h2>Straat :</h2></label></td>
+                        <td><input type ="text" name="straat" value="{{straat}}"></td> 
+                    </tr>
+                    <tr>
+                        <td><label for="nr"><h2>Nr :</h2></label></td>
+                        <td><input type ="text" name="nr" value="{{nr}}"></td> 
+                    </tr>
+                    <tr>
+                        <td><label for="postcode"><h2>Postcode :</h2></label></td>
+                        <td><input type ="text" name="postcode" value="{{postcode}}"></td> 
+                    </tr>
+                    <tr>
+                        <td><label for="gemeente"><h2>Gemeente :</h2></label></td>
+                        <td><input type ="text" name="gemeente" value="{{gemeente}}"></td> 
+                    </tr>
+                    <tr>
+                        <td><label for="wachtwoord"><h2>Wachtwoord</h2></label></td>
+                        <td><input type ="password" name="wachtwoord" value="{{wachtwoord}}"></td> 
+                    </tr><tr>
+                        <td><label for="email"><h2>Email</h2></label></td>
+                        <td><input type="email" name="email" value="{{email}}"></td> 
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value=" Registreren"></td> 
+                    </tr>
+                    
+                    </tbody>
+                </table>
             </form>
         </div>
-        {%if error == "leegVeld"%}
+        {%if error == "leegInput"%}
             <div class="error">
                 <p>
                     Gelieve alle velden in te vullen! 
                 </p>
             </div>
-        {%endif%}
-        {%if error == "klantBestaatAl"%}
+        
+        {%elseif error == "emailBestaat"%}
             <div class="error">
                 <p>
                     Uw email is reeds geregistreerd.
                 </p>
             </div>
-        {%endif%}
-        {% if error == "wachtwoord" %}
+        
+        {% elseif error == "wachtwoord" %}
             <div class="error">
                 <p>
-                    wachtwoord niet correct.
+                    Wachtwoord niet correct.
+                </p>
+                <p>
+                    Wachtwoord dient minstens 6  en maximum 32 karakters te hebben.
+                </p>
+                <p>
+                    Wachtwoord dient minstens 1 lowercase en 1 uppercase letter te bevatten.
+                </p>
+                <p>
+                    Wachtwoord dient minstens 1 cijfer te bevatten.
+                </p>
+            </div>
+        {% elseif error == "noValidEmail" %}
+            <div class="error">
+                <p>
+                    Dit is geen correct email.
                 </p>
             </div>
         {%endif%}
+        </section>
         </section>
     </body>
 </html>

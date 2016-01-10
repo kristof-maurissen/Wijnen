@@ -1,7 +1,9 @@
 <?php
 //scr/WijnshopTest/Business/WijnService.php
+
 namespace WijnshopTest\Business;
 use WijnshopTest\Data\WijnDAO;
+
 
 class WijnService {
     
@@ -15,13 +17,44 @@ class WijnService {
         $lijst = $wijnDAO->getWijnByCat($cat);
         return $lijst;
     }
+    public function getOverzichtByLand($land) {
+        $wijnDAO = new WijnDAO();
+        $lijst = $wijnDAO->getWijnByLand($land);
+        return $lijst;
+    }
+    
+    public function getOverzichtByJaar($jaar) {
+        $wijnDAO = new WijnDAO();
+        $lijst = $wijnDAO->getWijnByJaar($jaar);
+        return $lijst;
+    }
     
     public function getIdOfWijn($idwijn){
         $wijnDAO = new WijnDao();
         $lijst = $wijnDAO->getWijnByID($idwijn);
         return $lijst;
     }
+    public function getSelectWijn($idwijn){
+        $wijnDAO = new WijnDao();
+        $lijst = $wijnDAO->getSelectWijnByID($idwijn);
+        return $lijst;
+    }
     
+    
+    public function getTotaalWijn($id, $aantal){
+        $wijnid = $this->getIdOfWijn($id);
+        $wijn = $wijnid->getPrijs();
+        $totaal = ($wijn*$aantal);
+        return $totaal;
+    }
+    
+    public function insertWinkelmandje($wijn, $prijs, $winkelmandje){
+        $winkelmandje = array();
+        
+        array_push($winkelmandje, $prijs, $wijn);
+        return $winkelmandje;
+    }
+
     public function newWijn($naam, $jaartal, $land, $cat, $image, $artcode, $prijs) {       
         $wijnDAO = new WijnDAO();
         $wijn = $wijnDAO->createWijn($naam, $jaartal, $land, $cat, $image, $artcode, $prijs);
